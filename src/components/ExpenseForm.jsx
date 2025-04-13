@@ -27,7 +27,7 @@ function ExpenseForm({ onAdd }) {
       <input name="category" placeholder="Category" value={data.category} onChange={handleChange} required />
       <input name="amount" type="number" placeholder="Amount" value={data.amount} onChange={handleChange} required />
       <input name="date" type="date" value={data.date} onChange={handleChange} required />
-      <button type="submit">Add Expense</button>
+      <button type="submit">+Add Expense</button>
     </form>
   );
 }

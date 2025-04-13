@@ -75,7 +75,7 @@ function App() {
   return (
     <div className="container">
       <h1>Expense Tracker</h1>
-      <p>Learn more about your financial discipline and keep track of your spending!</p>
+      <p>Spend wise, live better through money discipline. Learn more about your financial discipline and keep track of your spending!</p>
 
       <div className="main">
         <ExpenseForm onAdd={addExpense} />

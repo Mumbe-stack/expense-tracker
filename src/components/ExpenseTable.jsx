@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons'; 
 
 function ExpenseTable({ expenses, onDelete }) {
   return (
@@ -21,7 +23,12 @@ function ExpenseTable({ expenses, onDelete }) {
             <td>{exp.category}</td>
             <td>${exp.amount}</td>
             <td>{exp.date}</td>
-            <td><button onClick={() => onDelete(index)}>Delete</button></td>
+            <td>
+              <button className="delete-btn" onClick={() => onDelete(index)}>
+                <FontAwesomeIcon icon={faTrash} style={{ color: 'red'}} /> 
+
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>
