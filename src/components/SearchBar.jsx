@@ -5,8 +5,8 @@ function Search({ onSearch }) {
     <input
       className="search"
       type="text"
-      placeholder="Search by name or description..."
-      onChange={(e) => onSearch(e.target.value)}
+      placeholder="Search by name or description"
+      onChange={(event) => onSearch(event.target.value)}
     />
   );
 }

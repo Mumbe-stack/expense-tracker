@@ -58,11 +58,11 @@ function App() {
   };
 
   const deleteExpense = (index) => {
-    const updated = expenses.filter((_, i) => i !== index);
-    setExpenses(updated);
+    const updatedExpenses = expenses.filter((_, i) => i !== index);
+    setExpenses(updatedExpenses);
   };
 
-  const visibleExpenses = [...expenses]
+  const displayedExpenses = [...expenses]
     .filter(exp => 
       exp.name.toLowerCase().includes(search.toLowerCase()) ||
       exp.description.toLowerCase().includes(search.toLowerCase())
@@ -82,7 +82,7 @@ function App() {
         <div className="table-area">
           <Search onSearch={setSearch} />
           <Sort onSort={setSort} />
-          <ExpenseTable expenses={visibleExpenses} onDelete={deleteExpense} />
+          <ExpenseTable expenses={displayedExpenses} onDelete={deleteExpense} />
         </div>
       </div>
     </div>

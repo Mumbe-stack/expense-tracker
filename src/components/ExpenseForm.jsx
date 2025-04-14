@@ -9,12 +9,12 @@ function ExpenseForm({ onAdd }) {
     date: ''
   });
 
-  const handleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+  const handleChange = (event) => {
+    setData({ ...data, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     onAdd(data);
     setData({ name: '', description: '', category: '', amount: '', date: '' });
   };
@@ -22,11 +22,20 @@ function ExpenseForm({ onAdd }) {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <h2>Add New Expense</h2>
-      <input name="name" placeholder="Name" value={data.name} onChange={handleChange} required />
-      <input name="description" placeholder="Description" value={data.description} onChange={handleChange} required />
-      <input name="category" placeholder="Category" value={data.category} onChange={handleChange} required />
-      <input name="amount" type="number" placeholder="Amount" value={data.amount} onChange={handleChange} required />
-      <input name="date" type="date" value={data.date} onChange={handleChange} required />
+      {Object.keys(data).map((key) => (
+  <input
+    key={key}
+    name={key}
+    placeholder={
+      key[0].toUpperCase() + key.substring(1)
+    }
+  
+    type={key === 'amount' ? 'number' : key === 'date' ? 'date' : 'text'}
+    value={data[key]}
+    onChange={handleChange}
+    required
+  />
+))}
       <button type="submit">+Add Expense</button>
     </form>
   );

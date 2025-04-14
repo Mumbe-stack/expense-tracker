@@ -1,32 +1,28 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons'; 
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
+const headers = ["Name", "Description", "Category", "Amount", "Date", "Action"];
 
 function ExpenseTable({ expenses, onDelete }) {
   return (
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Category</th>
-          <th>Amount</th>
-          <th>Date</th>
-          <th>Action</th>
+          {headers.map((head, index) => (
+            <th key={index}>{head}</th>
+          ))}
         </tr>
       </thead>
       <tbody>
-        {expenses.map((exp, index) => (
+        {expenses.map((item, index) => (
           <tr key={index}>
-            <td>{exp.name}</td>
-            <td>{exp.description}</td>
-            <td>{exp.category}</td>
-            <td>${exp.amount}</td>
-            <td>{exp.date}</td>
+            {["name", "description", "category", "amount", "date"].map((key, subIndex) => (
+              <td key={subIndex}>{key === "amount" ? `$${item[key]}` : item[key]}</td>
+            ))}
             <td>
-              <button className="delete-btn" onClick={() => onDelete(index)}>
-                <FontAwesomeIcon icon={faTrash} style={{ color: 'red'}} /> 
-
+              <button onClick={() => onDelete(index)}>
+                <FontAwesomeIcon icon={faTrash} />
               </button>
             </td>
           </tr>
